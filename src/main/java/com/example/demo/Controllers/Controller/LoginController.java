@@ -6,7 +6,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.example.demo.Controllers.BaseController;
 import com.example.demo.Model.User;
 import com.example.demo.Model.Request.RequestLogin;
-import com.example.demo.Services.UserService;
+import com.example.demo.Services.IRepositoryServices.IAuthenRepo;
 import com.example.demo.Utils.HttpException;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,10 +16,10 @@ import org.springframework.web.bind.annotation.RequestBody;
 
 @RestController
 @RequestMapping("")
-public class UserController {
+public class LoginController {
 
     @Autowired
-    UserService _userService;
+    IAuthenRepo _iauthenRepo;
 
     BaseController<String> _baseController = new BaseController<String>();
     BaseController<User> _baseControllerUser = new BaseController<User>();
@@ -27,7 +27,7 @@ public class UserController {
     @PostMapping("/login")
     public ResponseEntity<?> Login(@RequestBody RequestLogin requestLogin) {
         try {
-            String token = _userService.Login(requestLogin);
+            String token = _iauthenRepo.Login(requestLogin);
             return _baseController.Ok(token);
         } catch (HttpException e) {
             return _baseController.Error(null, e.StatusCode, e.message);
@@ -39,7 +39,7 @@ public class UserController {
     @PostMapping("/register")
     public ResponseEntity<?> Register(@RequestBody RequestLogin requestLogin) {
         try {
-            User user = _userService.Register(requestLogin);
+            User user = _iauthenRepo.Register(requestLogin);
             return _baseControllerUser.Ok(user);
         } catch (HttpException e) {
             return _baseController.Error(null, e.StatusCode, e.message);

@@ -1,10 +1,8 @@
 package com.example.demo.Services.IRepositoryServices;
 
-import com.example.demo.Model.User;
-import com.example.demo.Model.Request.RequestLogin;
+import org.springframework.security.core.userdetails.UserDetailsService;
 
 public interface IUserRepo {
-    String Login(RequestLogin requestLogin);
-    User Register(RequestLogin requestLogin);
+    UserDetailsService userDetailsService();
 
 }

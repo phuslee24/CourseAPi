@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 
 import com.example.demo.Model.Course;
 import com.example.demo.Model.DTO.CourseDTO;
+import com.example.demo.Model.Map.Course.CourseMapper;
 import com.example.demo.Model.Map.Course.CourserMapping;
 import com.example.demo.Model.Request.RequestCourse;
 import com.example.demo.Repository.CourseRepo;
@@ -21,6 +22,9 @@ public class CourseService implements ICourseRepo {
     @Autowired
     CourseRepo _courseRepo;
 
+    @Autowired
+    CourseMapper _courseMap;
+
     @Override
     public List<CourseDTO> GetAll() {
         List<Course> courses = _courseRepo.findAll();
@@ -33,6 +37,17 @@ public class CourseService implements ICourseRepo {
         }
         return courseDTOs;
     }
+
+    // @Override
+    // public List<CourseDTO> GetAll() {
+    // List<Course> courses = _courseRepo.findAll();
+    // List<CourseDTO> courseDTOs = new ArrayList<>();
+    // if (courses.size() < 1) {
+    // throw new HttpException(404, Variable.DatabaseNull);
+    // }
+    // courseDTOs = _courseMap.toCourseDTO(courses);
+    // return courseDTOs;
+    // }
 
     @Override
     public CourseDTO Create(RequestCourse requestCourse) {
