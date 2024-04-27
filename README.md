@@ -26,6 +26,7 @@ If you find this project useful, then please consider giving it a ⭐ on Github 
             ```   
        -   Setup backend database
             ```bash
-            Open the laragon application and add a database project and running the project will automatically add tables and columns
+            Open the laragon application and add a database project and
+             running the project will automatically add tables and columns
             ```
            
