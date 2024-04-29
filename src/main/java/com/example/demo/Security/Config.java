@@ -27,11 +27,14 @@ public class Config {
     private final JWTTokenFilter jwtTokenFilter;
     private final UserService userService;
 
+
+
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         http.csrf(AbstractHttpConfigurer::disable)
-                .authorizeHttpRequests(request -> request.requestMatchers("/login/**", "/api/employees/**","/register")
+                .authorizeHttpRequests(request -> request.requestMatchers("/login/**","/register")
                         .permitAll()
+                        .requestMatchers("/**").hasAnyAuthority( Role.MANAGER.name())
                         .requestMatchers("/language").hasAnyAuthority( Role.ADMIN.name(), Role.MANAGER.name())
                         .requestMatchers("/language").hasAnyAuthority(Role.ADMIN.name())
                         .requestMatchers("/course").hasAnyAuthority(Role.USER.name())
