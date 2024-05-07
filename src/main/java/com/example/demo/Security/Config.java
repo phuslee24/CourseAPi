@@ -32,7 +32,7 @@ public class Config {
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         http.csrf(AbstractHttpConfigurer::disable)
-                .authorizeHttpRequests(request -> request.requestMatchers("/login/**","/register")
+                .authorizeHttpRequests(request -> request.requestMatchers("/login/**","/register","/send_mail")
                         .permitAll()
                         .requestMatchers("/**").hasAnyAuthority( Role.MANAGER.name())
                         .requestMatchers("/language").hasAnyAuthority( Role.ADMIN.name(), Role.MANAGER.name())
