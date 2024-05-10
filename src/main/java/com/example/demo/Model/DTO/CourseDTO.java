@@ -14,6 +14,8 @@ public class CourseDTO {
     private String lesson;
     private String description;
     private String term;
+    private String image;
+
     private CategoryDTO category;
     private LanguageDTO language;
     private LevelDTO level;

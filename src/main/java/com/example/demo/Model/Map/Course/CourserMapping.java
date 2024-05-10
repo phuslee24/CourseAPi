@@ -17,6 +17,8 @@ public class CourserMapping {
         courseDTO.setLesson(c.getLesson());
         courseDTO.setDescription(c.getDescription());
         courseDTO.setTerm(c.getTerm());
+        courseDTO.setImage(c.getImage());
+
         courseDTO.setCategory(
                 new CategoryDTO(c.getCategory().getId(), c.getCategory().getName()));
         courseDTO.setLanguage(
@@ -25,11 +27,12 @@ public class CourserMapping {
                 new LevelDTO(c.getLevel().getId(), c.getLevel().getName(), c.getLevel().getSign()));
         return courseDTO;
     }
-    public static Course Course(RequestCourse c) {
+    public static Course Course(RequestCourse c,String image) {
         Course course = new Course();
         course.setLesson(c.getLesson());
         course.setDescription(c.getDescription());
         course.setTerm(c.getTerm());
+        course.setImage(image);
         course.setCategory(new Category(c.getCategory_id(), null, null));
         course.setLevel(new Level(c.getLevel_id(), null, null, null));
         course.setLanguage(new Language(c.getLanguage_id(), null, null, null));

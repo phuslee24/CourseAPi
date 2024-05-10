@@ -1,5 +1,7 @@
 package com.example.demo.Model;
 
+import org.springframework.web.multipart.MultipartFile;
+
 import com.fasterxml.jackson.annotation.JsonBackReference;
 
 import jakarta.persistence.Column;
@@ -33,14 +35,8 @@ public class Course extends BaseModel {
     private String description;
     @Column(name = "term")
     private String term;
-
-    // @Column(name = "category_id")
-    // private int category_id;
-    // @Column(name = "language_id")
-    // private int language_id;
-    // @Column(name = "level_id")
-    // private int level_id;
-  
+    @Column(name = "image")
+    private String image;
 
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
     @JsonBackReference

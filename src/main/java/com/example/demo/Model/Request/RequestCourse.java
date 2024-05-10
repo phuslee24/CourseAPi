@@ -1,5 +1,7 @@
 package com.example.demo.Model.Request;
 
+import org.springframework.web.multipart.MultipartFile;
+
 import jakarta.annotation.Nullable;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -12,18 +14,21 @@ import lombok.Setter;
 @NoArgsConstructor
 public class RequestCourse {
     @Nullable
-    private String lesson;
+    public String lesson;
     @Nullable
-    private String description;
+    public String description;
     @Nullable
-    private String term;
+    public String term;
 
     @Nullable
-    private int language_id;
+    public MultipartFile file;
+
     @Nullable
-    private int level_id;
+    public int language_id;
     @Nullable
-    private int category_id;
+    public int level_id;
+    @Nullable
+    public int category_id;
 
     
 }
