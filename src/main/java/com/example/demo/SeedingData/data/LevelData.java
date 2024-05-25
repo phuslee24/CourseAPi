@@ -11,9 +11,9 @@ import com.example.demo.Model.Level;
 public class LevelData {
     public List<Level> Data() {
         List<Level> data = new ArrayList<>();
-        data.add(new Level(1, "low", "", null));
-        data.add(new Level(2, "high", "", null));
-        data.add(new Level(3, "middle", "", null));
+        data.add(new Level(1, "low", ""));
+        data.add(new Level(2, "high", ""));
+        data.add(new Level(3, "middle", ""));
         return data;
     }
 }

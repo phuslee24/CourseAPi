@@ -44,6 +44,18 @@ public class CourseService implements ICourseRepo {
         }
         return courseDTOs;
     }
+    @Override
+    public List<CourseDTO> GetAllWithLanguage() {
+        List<Course> courses = _courseRepo.getAllWithLangguage();
+        List<CourseDTO> courseDTOs = new ArrayList<>();
+        if (courses.size() < 1) {
+            throw new HttpException(404, Variable.DatabaseNull);
+        }
+        for (Course c : courses) {
+            courseDTOs.add(CourserMapping.CourseDTO(c));
+        }
+        return courseDTOs;
+    }
 
     @Override
     public CourseDTO Create(RequestCourse requestCourse) {

@@ -1,6 +1,7 @@
 package com.example.demo.Model;
 
 
+import java.lang.reflect.Constructor;
 import java.util.Set;
 
 import jakarta.persistence.CascadeType;
@@ -34,4 +35,10 @@ public class Level extends BaseModel{
 
     @OneToMany(mappedBy = "level", cascade = CascadeType.ALL)
     private Set<Course> course;
+
+    public Level(int Id, String Sign, String Name){
+        this.id = Id;
+        this.sign = Sign;
+        this.name = Name;
+    }
 }

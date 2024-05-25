@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.example.demo.Controllers.BaseController;
+import com.example.demo.Model.Course;
 import com.example.demo.Model.DTO.CourseDTO;
 import com.example.demo.Model.Request.RequestCourse;
 import com.example.demo.Services.CourseService;
@@ -33,10 +34,21 @@ public class CourseController {
     BaseController<CourseDTO> _baseController = new BaseController<CourseDTO>();
     BaseController<List<CourseDTO>> _baseControllers = new BaseController<List<CourseDTO>>();
 
+
     @GetMapping()
     public ResponseEntity<?> Get() {
         try {
             return _baseControllers.Ok(_courService.GetAll());
+        } catch (HttpException e) {
+            return _baseControllers.Error(null, e.StatusCode, e.message);
+        } catch (Exception e) {
+            return _baseControllers.Error(null, 500, e.getMessage());
+        }
+    } 
+    @GetMapping("/language")
+    public ResponseEntity<?> GetByLanguage() {
+        try {
+            return _baseControllers.Ok(_courService.GetAllWithLanguage());
         } catch (HttpException e) {
             return _baseControllers.Error(null, e.StatusCode, e.message);
         } catch (Exception e) {
